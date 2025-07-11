@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Link from 'next/link'
 import type { LinkAttrs, TextNode } from '../../delivery-api'
 import { classFromTextNode } from './classFromTextNode'
 
@@ -22,42 +23,42 @@ function TextNodeView(props: TextNodeViewProps) {
   return (
     <>
       {props.linkAttrs.linktype === 'url' ? (
-        <a
+        <Link
           target="_blank"
           rel="noopener noreferrer"
           href={props.linkAttrs.href}
           className={classFromLinkTextNode(props.node)}
         >
           {props.node.text}
-        </a>
+        </Link>
       ) : null}
       {props.linkAttrs.linktype === 'story' ? (
-        <a
+        <Link
           target="_blank"
           rel="noopener noreferrer"
           href={hrefFromStoryLink(props.linkAttrs.href)}
           className={classFromLinkTextNode(props.node)}
         >
           {props.node.text}
-        </a>
+        </Link>
       ) : null}
       {props.linkAttrs.linktype === 'email' ? (
-        <a
+        <Link
           href={`mailto:${props.linkAttrs.href}`}
           className={classFromLinkTextNode(props.node)}
         >
           {props.node.text}
-        </a>
+        </Link>
       ) : null}
       {props.linkAttrs.linktype === 'asset' ? (
-        <a
+        <Link
           target="_blank"
           rel="noopener noreferrer"
           href={props.linkAttrs.href}
           className={classFromLinkTextNode(props.node)}
         >
           {props.node.text}
-        </a>
+        </Link>
       ) : null}
     </>
   )

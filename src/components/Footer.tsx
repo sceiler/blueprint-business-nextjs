@@ -1,6 +1,7 @@
 'use client'
 import * as React from 'react'
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { YoutubeIcon, XIcon, LinkedInIcon } from './icons'
 
 export type FooterViewProps = {
@@ -106,24 +107,24 @@ function FooterView(props: FooterViewProps) {
             mobile apps, AR/VR or voice content.
           </div>
           <div className="flex items-center gap-3">
-            <a
+            <Link
               href="https://www.linkedin.com/"
               className="text-white"
             >
               <LinkedInIcon />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://x.com/"
               className="text-white"
             >
               <XIcon />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://youtube.com/"
               className="text-white"
             >
               <YoutubeIcon />
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col gap-8 w-full md:flex-row md:justify-start md:items-start md:gap-28 md:w-auto">
@@ -136,7 +137,7 @@ function FooterView(props: FooterViewProps) {
                 {menu.title}
               </div>
               {menu.items?.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   className={`text-base font-medium leading-snug ${
@@ -144,7 +145,7 @@ function FooterView(props: FooterViewProps) {
                   }`}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </div>
           ))}

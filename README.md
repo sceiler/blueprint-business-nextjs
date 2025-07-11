@@ -63,3 +63,10 @@ A possible workaround would be to:
 2. On each event, store the content in an in-memory database, such as Redis.
 3. Revalidate the page.
 4. In the RSC, fetch the content from the in-memory database.
+
+## General
+
+For issues related to the Business blueprint, please open issues at the corresponding template repository:
+
+- Nextjs: https://github.com/storyblok/blueprint-business-nextjs/issues
+- Nuxt: https://github.com/storyblok/blueprint-business-nuxt/issues
