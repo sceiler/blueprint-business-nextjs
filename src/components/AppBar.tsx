@@ -1,6 +1,7 @@
 'use client'
 import * as React from 'react'
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { HamburgerIcon, BrandIcon } from './icons'
 
 export type AppbarProps = {
@@ -43,12 +44,12 @@ function AppBarView(props: AppbarProps) {
           </div>
         </div>
         <div className="sm:hidden flex items-center gap-2">
-          <a
+          <Link
             href="/get-in-touch"
             className="self-center px-4 py-2 rounded-lg inline-flex flex-col items-end gap-2.5 overflow-hidden text-right justify-center text-white text-sm font-semibold leading-tight bg-stone-900 hover:bg-stone-800"
           >
             Get in touch
-          </a>
+          </Link>
           <button
             aria-label="Open menu"
             onClick={(_event) => setMenuOpen(!menuOpen)}
@@ -60,7 +61,7 @@ function AppBarView(props: AppbarProps) {
       <div className="hidden sm:flex flex-row items-stretch justify-start gap-6">
         <div className="flex flex-row items-stretch relative justify-start gap-4">
           {tabs?.map((tab) => (
-            <a
+            <Link
               key={tab.href}
               href={tab.href}
               className={`flex items-center text-stone-900 text-sm font-semibold leading-tight transition-border duration-300 ease-in-out border-y-[3px] ${
@@ -70,20 +71,20 @@ function AppBarView(props: AppbarProps) {
               }`}
             >
               <span>{tab.label}</span>
-            </a>
+            </Link>
           ))}
         </div>
-        <a
+        <Link
           href="/get-in-touch"
           className="self-center px-4 py-2 rounded-lg inline-flex flex-col items-end gap-2.5 overflow-hidden text-right justify-center text-white text-sm font-semibold leading-tight bg-stone-900 hover:bg-stone-800"
         >
           Get in touch
-        </a>
+        </Link>
       </div>
       {menuOpen ? (
         <div className="flex flex-col sm:hidden mt-2 gap-2 z-50 absolute top-[72px] left-0 right-0 bg-white shadow-lg">
           {tabs?.map((tab) => (
-            <a
+            <Link
               key={tab.href}
               href={tab.href}
               onClick={(_event) => setMenuOpen(false)}
@@ -92,7 +93,7 @@ function AppBarView(props: AppbarProps) {
               }`}
             >
               <span>{tab.label}</span>
-            </a>
+            </Link>
           ))}
         </div>
       ) : null}

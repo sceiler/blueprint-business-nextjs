@@ -1,5 +1,6 @@
 import * as React from 'react'
 import NextImage from 'next/image'
+import Link from 'next/link'
 import AppBarView from './AppBar'
 import FooterView from './Footer'
 
@@ -28,12 +29,12 @@ function NotFoundPage(props: NotFoundPageProps) {
               We couldn’t find the page you’re looking for.
             </p>
           </div>
-          <a
+          <Link
             href="/"
             className="px-6 py-3 rounded-[10px] flex flex-col justify-start items-center gap-3 overflow-hidden justify-center text-white text-lg font-semibold leading-relaxed bg-stone-900 hover:bg-stone-800"
           >
             Back to Home
-          </a>
+          </Link>
         </div>
         <NextImage
           src="/404.png"

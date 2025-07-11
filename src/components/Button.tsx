@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { editableAttributes } from '@storyblok/preview-bridge'
+import Link from 'next/link'
 import type { ButtonContent } from '../content'
 import type {
   AssetLinkContent,
@@ -38,7 +39,7 @@ function ButtonView(props: ButtonViewProps) {
   return (
     <>
       {props.content.link?.linktype === 'url' ? (
-        <a
+        <Link
           rel="noopener noreferrer"
           {...editableAttributes(props.content)}
           href={(props.content.link as UrlLinkContent)?.cached_url}
@@ -46,10 +47,10 @@ function ButtonView(props: ButtonViewProps) {
           className={classFromContent(props.content)}
         >
           {props.content.text}
-        </a>
+        </Link>
       ) : null}
       {props.content.link?.linktype === 'story' ? (
-        <a
+        <Link
           rel="noopener noreferrer"
           {...editableAttributes(props.content)}
           href={hrefFromStoryLink(
@@ -59,26 +60,26 @@ function ButtonView(props: ButtonViewProps) {
           className={classFromContent(props.content)}
         >
           {props.content.text}
-        </a>
+        </Link>
       ) : null}
       {props.content.link?.linktype === 'email' ? (
-        <a
+        <Link
           {...editableAttributes(props.content)}
           href={`mailto:${(props.content.link as EmailLinkContent)?.email}`}
           className={classFromContent(props.content)}
         >
           {props.content.text}
-        </a>
+        </Link>
       ) : null}
       {props.content.link?.linktype === 'asset' ? (
-        <a
+        <Link
           rel="noopener noreferrer"
           {...editableAttributes(props.content)}
           href={(props.content.link as AssetLinkContent)?.cached_url}
           className={classFromContent(props.content)}
         >
           {props.content.text}
-        </a>
+        </Link>
       ) : null}
     </>
   )
