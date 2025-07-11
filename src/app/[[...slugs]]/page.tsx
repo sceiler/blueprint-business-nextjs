@@ -29,7 +29,7 @@ export default async function DynamicPage(props: DynamicPageProps) {
     throw new Error('Failed to parse params')
   }
 
-  const storyblokSearchParams = parseBridgeSearchParams(
+  const bridgeSearchParams = parseBridgeSearchParams(
     await props.searchParams,
   ).value
 
@@ -46,7 +46,7 @@ export default async function DynamicPage(props: DynamicPageProps) {
     baseUrl,
     deliveryApiToken,
     slugs: paramsResult.value.slugs,
-    storyblokSearchParams: storyblokSearchParams,
+    bridgeSearchParams,
     resolveRelations: ['teamMembers.teamMembers'],
   }).catch((error) => {
     console.error('Error fetching story:', error)
@@ -60,7 +60,7 @@ export default async function DynamicPage(props: DynamicPageProps) {
     <ClientContentView
       rels={rels}
       storyFromServer={story}
-      enablePreview={storyblokSearchParams.version === 'draft'}
+      enablePreview={bridgeSearchParams.version === 'draft'}
     />
   )
 

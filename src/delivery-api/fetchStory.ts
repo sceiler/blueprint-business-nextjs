@@ -15,8 +15,8 @@ type FetchStoryParams = {
   baseUrl: string
   deliveryApiToken: string
   slugs: string[]
-  storyblokSearchParams: BridgeSearchParams
-  resolveRelations?: `${string}.${string}`[]
+  bridgeSearchParams: BridgeSearchParams
+  resolveRelations?: string[]
 }
 
 export const fetchStory = async (
@@ -25,7 +25,7 @@ export const fetchStory = async (
   const {
     baseUrl,
     deliveryApiToken,
-    storyblokSearchParams,
+    bridgeSearchParams,
     resolveRelations = [],
   } = params
 
@@ -33,13 +33,13 @@ export const fetchStory = async (
   //  the story which for pages includes `pages` from the "pages" folder.
   //  But in production, we need to prepend `pages` to the slug given in the URL.
   const language =
-    storyblokSearchParams.version === 'draft'
-      ? storyblokSearchParams._storyblok_lang
+    bridgeSearchParams.version === 'draft'
+      ? bridgeSearchParams._storyblok_lang
       : 'default'
 
   const query = new URLSearchParams({
     token: deliveryApiToken,
-    version: storyblokSearchParams.version,
+    version: bridgeSearchParams.version,
     resolve_relations: resolveRelations.join(','),
     language: language,
   }).toString()
@@ -47,9 +47,9 @@ export const fetchStory = async (
   // When the page is opened in the editor, or after clicking the "Open Draft/Published" button, use the id of the story.
   // Otherwise, use the path in the URL, prepended with `pages` (where all pages are stored).
   const slugOrId =
-    storyblokSearchParams.version === 'draft'
-      ? storyblokSearchParams._storyblok
-      : (storyblokSearchParams._storyblok_published ??
+    bridgeSearchParams.version === 'draft'
+      ? bridgeSearchParams._storyblok
+      : (bridgeSearchParams._storyblok_published ??
         ['pages', ...params.slugs].join('/'))
 
   const url = `${baseUrl}/v2/cdn/stories/${slugOrId}?${query}`

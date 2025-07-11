@@ -45,7 +45,7 @@ function AppBarView(props: AppbarProps) {
         </div>
         <div className="sm:hidden flex items-center gap-2">
           <Link
-            href="/get-in-touch"
+            href="mailto:connect@brightstart.com"
             className="self-center px-4 py-2 rounded-lg inline-flex flex-col items-end gap-2.5 overflow-hidden text-right justify-center text-white text-sm font-semibold leading-tight bg-stone-900 hover:bg-stone-800"
           >
             Get in touch
@@ -75,7 +75,7 @@ function AppBarView(props: AppbarProps) {
           ))}
         </div>
         <Link
-          href="/get-in-touch"
+          href="mailto:connect@brightstart.com"
           className="self-center px-4 py-2 rounded-lg inline-flex flex-col items-end gap-2.5 overflow-hidden text-right justify-center text-white text-sm font-semibold leading-tight bg-stone-900 hover:bg-stone-800"
         >
           Get in touch
