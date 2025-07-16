@@ -1,4 +1,3 @@
-import { ClientContentView } from './ClientContentView'
 import { fetchStory } from '@/delivery-api'
 import { parseBridgeSearchParams } from '@/bridge'
 import {
@@ -9,6 +8,8 @@ import {
   withDefault,
 } from 'pure-parse'
 import { notFound } from 'next/navigation'
+import { ClientContentView } from '@/app/[[...slugs]]/ClientContentView'
+// import { StoryContentView } from '@/app/[[...slugs]]/StoryContentView'
 
 type DynamicPageProps = {
   params: Promise<unknown>

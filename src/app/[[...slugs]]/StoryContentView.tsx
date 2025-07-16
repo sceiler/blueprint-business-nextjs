@@ -1,8 +1,19 @@
 import { FunctionComponent } from 'react'
-import { parseContent, resolveStories } from '@/content'
+import { Content, parseContent, resolveStories } from '@/content'
 import { Story } from '@/delivery-api'
 import ContentView from '@/components/ContentView'
 import { formatResult } from 'pure-parse'
+import { StoryblokStory, storyblokInit } from '@storyblok/react/rsc'
+
+export const BlokView: FunctionComponent<{ blok: Content }> = (props) => (
+  <ContentView content={props.blok} />
+)
+
+storyblokInit({
+  components: {
+    page: BlokView,
+  },
+})
 
 /**
  * Render the content in a story.
@@ -24,5 +35,12 @@ export const StoryContentView: FunctionComponent<{
     throw new Error(`Failed to parse content`)
   }
 
-  return <ContentView content={contentRes.value} />
+  return (
+    <StoryblokStory
+      story={{
+        ...story,
+        content: contentRes.value,
+      }}
+    />
+  )
 }
