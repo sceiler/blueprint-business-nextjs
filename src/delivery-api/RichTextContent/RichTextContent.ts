@@ -34,7 +34,7 @@ export type ParagraphNode = {
 export type TextNode = {
   type: 'text'
   text: string
-  marks: Mark[]
+  marks?: Mark[]
 }
 
 export type HorizontalRuleNode = {

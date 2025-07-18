@@ -1,33 +1,33 @@
 import * as React from 'react'
-import { editableAttributes } from '@storyblok/preview-bridge'
+import { storyblokEditable } from '@storyblok/react/rsc'
 import NextImage from 'next/image'
 import type { TestimonialContent } from '../content'
 import { backgroundColor } from './backgroundColorClass'
 
-export type TestimonialViewProps = {
-  content: TestimonialContent
+export type TestimonialProps = {
+  blok: TestimonialContent
 }
 
-function TestimonialView(props: TestimonialViewProps) {
+function Testimonial(props: TestimonialProps) {
   return (
     <div
       className="flex flex-col items-start gap-6 p-12 flex-1 rounded-[12px] bg-white"
-      {...editableAttributes(props.content)}
+      {...storyblokEditable(props.blok)}
     >
       <p className="self-stretch justify-start text-stone-900 text-base font-normal leading-normal">
-        “{props.content.quote}”
+        “{props.blok.quote}”
       </p>
       <div className="self-stretch flex gap-5">
-        {props.content.image ? (
+        {props.blok.image ? (
           <div
             className={`aspect-[1/1] shrink-0 w-[44px] h-[44px] overflow-hidden rounded-full ${backgroundColor(
-              props.content.imageBackgroundColor,
+              props.blok.imageBackgroundColor,
             )}`}
           >
             <NextImage
               className="object-cover w-full h-full "
-              src={props.content.image?.filename}
-              alt={props.content.image?.alt ?? ''}
+              src={props.blok.image?.filename}
+              alt={props.blok.image?.alt ?? ''}
               width={100}
               height={100}
             />
@@ -35,10 +35,10 @@ function TestimonialView(props: TestimonialViewProps) {
         ) : null}
         <div className="flex flex-col">
           <div className="justify-start text-stone-900 text-base font-bold font-['Inter']">
-            {props.content.name}
+            {props.blok.name}
           </div>
           <div className="justify-start text-stone-900 text-base font-normal leading-normal">
-            {props.content.title}
+            {props.blok.title}
           </div>
         </div>
       </div>
@@ -46,4 +46,4 @@ function TestimonialView(props: TestimonialViewProps) {
   )
 }
 
-export default TestimonialView
+export default Testimonial

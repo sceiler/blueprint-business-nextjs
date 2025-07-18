@@ -1,29 +1,29 @@
 import * as React from 'react'
-import { editableAttributes } from '@storyblok/preview-bridge'
+import { storyblokEditable } from '@storyblok/react/rsc'
 import type { CardsContent } from '../content'
-import CardView from './Card'
-import RichTextView from './RichTextView'
+import RichTextView from '../components/RichText'
+import Card from './Card'
 
-export type CardsViewProps = {
-  content: CardsContent
+export type CardsProps = {
+  blok: CardsContent
 }
 
-function CardsView(props: CardsViewProps) {
+function Cards(props: CardsProps) {
   return (
     <div
       className="self-stretch px-5 py-10 md:px-20 md:py-24 bg-neutral-100 items-center flex flex-col"
-      {...editableAttributes(props.content)}
+      {...storyblokEditable(props.blok)}
     >
       <div className="max-w-6xl flex flex-col gap-10">
         <div className="self-stretch flex-1 inline-flex flex-col justify-center items-start gap-2">
-          <RichTextView node={props.content.description} />
+          <RichTextView doc={props.blok.description} />
         </div>
         <div className="self-stretch flex justify-start items-stretch gap-4 md:gap-6 flex-col md:flex-row">
-          {props.content.cards?.map((card) => (
-            <CardView
+          {props.blok.cards?.map((card) => (
+            <Card
               className="flex-1 self-stretch"
               key={card._uid}
-              content={card}
+              blok={card}
             />
           ))}
         </div>
@@ -32,4 +32,4 @@ function CardsView(props: CardsViewProps) {
   )
 }
 
-export default CardsView
+export default Cards
