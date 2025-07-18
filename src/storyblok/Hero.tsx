@@ -1,13 +1,13 @@
 import * as React from 'react'
-import { editableAttributes } from '@storyblok/preview-bridge'
+import { storyblokEditable } from '@storyblok/react/rsc'
 import NextImage from 'next/image'
 import type { HeroContent } from '../content'
-import RichTextView from './RichTextView'
+import RichTextView from '../components/RichText'
 import { backgroundColor } from './backgroundColorClass'
-import ButtonView from './Button'
+import Button from './Button'
 
-export type HeroViewProps = {
-  content: HeroContent
+export type HeroProps = {
+  blok: HeroContent
 }
 
 const rootAlignment = (content: HeroContent): string => {
@@ -37,46 +37,46 @@ const textAlignment = (content: HeroContent): string => {
   }
 }
 
-function Hero(props: HeroViewProps) {
+function Hero(props: HeroProps) {
   return (
     <div
-      {...editableAttributes(props.content)}
+      {...storyblokEditable(props.blok)}
       className={`self-stretch ${backgroundColor(
-        props.content.backgroundColor,
+        props.blok.backgroundColor,
       )} flex justify-center`}
     >
       <div
         className={`w-full ${
-          props.content.imagePadding ? 'p-4 md:p-10' : 'p-0'
-        } ${rootAlignment(props.content)} flex-wrap justify-between max-w-7xl`}
+          props.blok.imagePadding ? 'p-4 md:p-10' : 'p-0'
+        } ${rootAlignment(props.blok)} flex-wrap justify-between max-w-7xl`}
       >
         <div
           className={`
           flex-1 p-6 md:p-12 lg:px-20 lg:py-25 inline-flex flex-col justify-center
-          ${textAlignment(props.content)}
+          ${textAlignment(props.blok)}
         `}
         >
-          <RichTextView node={props.content.description} />
+          <RichTextView doc={props.blok.description} />
           <div className="flex gap-2 md:gap-4 flex-wrap items-center">
-            {props.content.buttons?.map((button) => (
-              <ButtonView
+            {props.blok.buttons?.map((button) => (
+              <Button
                 key={button._uid}
-                content={button}
+                blok={button}
               />
             ))}
           </div>
         </div>
-        {props.content.image ? (
+        {props.blok.image ? (
           <div
             className={`relative flex-1 overflow-hidden md:min-h-[650px] ${
-              props.content.imagePadding
+              props.blok.imagePadding
                 ? 'rounded-xl max-h-[60vw] min-h-[40vw] md:max-h-[800px]'
                 : 'rounded-none max-h-[100%] min-h-[40vw] md:min-h-[100%]'
             } `}
           >
             <NextImage
-              src={props.content.image?.filename}
-              alt={props.content.image?.alt ?? ''}
+              src={props.blok.image?.filename}
+              alt={props.blok.image?.alt ?? ''}
               width={1200}
               height={650}
               className={`absolute h-full w-full object-cover`}

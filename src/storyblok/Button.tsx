@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { editableAttributes } from '@storyblok/preview-bridge'
+import { storyblokEditable } from '@storyblok/react/rsc'
 import Link from 'next/link'
 import type { ButtonContent } from '../content'
 import type {
@@ -9,8 +9,8 @@ import type {
   UrlLinkContent,
 } from '../delivery-api'
 
-export type ButtonViewProps = {
-  content: ButtonContent
+export type ButtonProps = {
+  blok: ButtonContent
 }
 
 const classFromContent = (content: ButtonContent): string =>
@@ -35,54 +35,54 @@ const colorStyles = (content: ButtonContent): string => {
 const hrefFromStoryLink = (slugs: string): string =>
   '/' + slugs.split('/').slice(1).join('/')
 
-function ButtonView(props: ButtonViewProps) {
+function Button(props: ButtonProps) {
   return (
     <>
-      {props.content.link?.linktype === 'url' ? (
+      {props.blok.link?.linktype === 'url' ? (
         <Link
           rel="noopener noreferrer"
-          {...editableAttributes(props.content)}
-          href={(props.content.link as UrlLinkContent)?.cached_url}
-          target={props.content.link?.target}
-          className={classFromContent(props.content)}
+          {...storyblokEditable(props.blok)}
+          href={(props.blok.link as UrlLinkContent)?.cached_url}
+          target={props.blok.link?.target}
+          className={classFromContent(props.blok)}
         >
-          {props.content.text}
+          {props.blok.text}
         </Link>
       ) : null}
-      {props.content.link?.linktype === 'story' ? (
+      {props.blok.link?.linktype === 'story' ? (
         <Link
           rel="noopener noreferrer"
-          {...editableAttributes(props.content)}
+          {...storyblokEditable(props.blok)}
           href={hrefFromStoryLink(
-            (props.content.link as StoryLinkContent)?.cached_url,
+            (props.blok.link as StoryLinkContent)?.cached_url,
           )}
-          target={props.content.link?.target}
-          className={classFromContent(props.content)}
+          target={props.blok.link?.target}
+          className={classFromContent(props.blok)}
         >
-          {props.content.text}
+          {props.blok.text}
         </Link>
       ) : null}
-      {props.content.link?.linktype === 'email' ? (
+      {props.blok.link?.linktype === 'email' ? (
         <Link
-          {...editableAttributes(props.content)}
-          href={`mailto:${(props.content.link as EmailLinkContent)?.email}`}
-          className={classFromContent(props.content)}
+          {...storyblokEditable(props.blok)}
+          href={`mailto:${(props.blok.link as EmailLinkContent)?.email}`}
+          className={classFromContent(props.blok)}
         >
-          {props.content.text}
+          {props.blok.text}
         </Link>
       ) : null}
-      {props.content.link?.linktype === 'asset' ? (
+      {props.blok.link?.linktype === 'asset' ? (
         <Link
           rel="noopener noreferrer"
-          {...editableAttributes(props.content)}
-          href={(props.content.link as AssetLinkContent)?.cached_url}
-          className={classFromContent(props.content)}
+          {...storyblokEditable(props.blok)}
+          href={(props.blok.link as AssetLinkContent)?.cached_url}
+          className={classFromContent(props.blok)}
         >
-          {props.content.text}
+          {props.blok.text}
         </Link>
       ) : null}
     </>
   )
 }
 
-export default ButtonView
+export default Button
