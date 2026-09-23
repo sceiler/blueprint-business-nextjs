@@ -1,56 +1,11 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Maintained Storyblok business blueprint
 
-## Getting Started
+Derived from [Storyblok’s business blueprint](https://github.com/storyblok/blueprint-business-nextjs), upgraded to Next.js 16.3.6 and React 19.3.0. The original content model and component patterns remain available. Choose a design system independently through the v0 request; this repository does not install Storyblok MUI.
 
-First, install dependencies:
+Use Node 22+ and `corepack pnpm install`. Set the variables in `.env.example` with a **public, published-only** Storyblok delivery token. Management tokens never belong in this app. Run `pnpm dev`, or `pnpm build` and `pnpm start`.
 
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
-```
+Server Components use `getPublishedStory(slug)` or `getPublishedStories(uuids)` from `src/lib/storyblok-delivery.ts`. Each render retrieves the latest space version, then reads published content using Storyblok’s versioned CDN. The app does not store a CMS snapshot or cache the page at build time. `ContentRefresh` refreshes an open visible page every 30 seconds; allow a few additional seconds for Storyblok’s publish propagation. Draft preview is separate from this published-content flow.
 
-Run the development server:
+For generated landing pages, keep the selected story UUIDs and bind UI props to their fetched content fields. Keep `ContentRefresh` in the layout. If adding `src/app/page.tsx`, remove the original optional catch-all route so there is one root route.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Then open [https://localhost:3000](https://localhost:3000) with your browser to see the result.
-
-## About the codebase
-
-Here follows a brief overview of the codebase:
-
-## How to add a new component
-
-To add a new component, you need to do three things:
-
-1. Update the content model, which describes the structure of the content with TypeScript types; see `src/content/content-model.ts`.
-2. Create a component that renders the content; see `src/components/`.
-3. Register the component in `src/lib/storyblok.ts`
-
-## Validation/Parsing
-
-This project has TypeScript types that describe the content model; however, by default, this content is not validated. To parse the content, find the comment that says `// Parsing: ` and uncomment the lines below.
-
-You can use any validation library you prefer—this project uses [PureParse](https://pureparse.dev/) because this library allows you to [type check the parser](https://pureparse.dev/guide/why-pure-parse.html#why-pureparse).
-
-In this case, when you add a new component, you will also need to update the parsing logic.
-
-## General
-
-For issues related to the Business blueprint, please open issues at the corresponding template repository:
-
-- Nextjs: https://github.com/storyblok/blueprint-business-nextjs/issues
-- Nuxt: https://github.com/storyblok/blueprint-business-nuxt/issues
+Validation: `pnpm lint`, `pnpm check:types`, `pnpm test`, `pnpm build`.

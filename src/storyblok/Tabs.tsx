@@ -30,7 +30,7 @@ function Tabs(props: TabsProps) {
               <button
                 key={tab._uid}
                 {...storyblokEditable(tab)}
-                onClick={(_event) => setCurrentTabUid(tab._uid)}
+                onClick={() => setCurrentTabUid(tab._uid)}
                 className={`flex-1 py-2 text-sm sm:py-3 sm:text-base md:py-4 ${
                   currentTabUid === tab._uid
                     ? 'bg-stone-800 text-white'

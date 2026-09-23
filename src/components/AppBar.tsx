@@ -1,6 +1,7 @@
 'use client'
 import * as React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { HamburgerIcon, BrandIcon } from './icons'
 
@@ -24,13 +25,10 @@ const tabs = [
 ]
 
 function AppBarView(props: AppbarProps) {
-  const [path, setPath] = useState<string | undefined>(() => undefined)
+  const path = usePathname()
 
   const [menuOpen, setMenuOpen] = useState<boolean>(() => false)
 
-  useEffect(() => {
-    setPath(window.location.pathname)
-  }, [])
 
   return (
     <div
@@ -52,7 +50,7 @@ function AppBarView(props: AppbarProps) {
           </Link>
           <button
             aria-label="Open menu"
-            onClick={(_event) => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen(!menuOpen)}
           >
             <HamburgerIcon />
           </button>
@@ -87,7 +85,7 @@ function AppBarView(props: AppbarProps) {
             <Link
               key={tab.href}
               href={tab.href}
-              onClick={(_event) => setMenuOpen(false)}
+              onClick={() => setMenuOpen(false)}
               className={`flex items-center text-stone-900 hover:text-stone-800 text-base font-semibold leading-tight px-2 py-2 rounded transition-colors duration-200 ${
                 path === tab.href ? 'bg-stone-100' : ''
               }`}

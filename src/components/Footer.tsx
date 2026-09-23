@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { YoutubeIcon, XIcon, LinkedInIcon } from './icons'
 
@@ -82,11 +82,8 @@ const footerMenu = [
 ]
 
 function FooterView(props: FooterViewProps) {
-  const [path, setPath] = useState<string | undefined>(() => undefined)
+  const path = usePathname()
 
-  useEffect(() => {
-    setPath(window.location.pathname)
-  }, [])
 
   return (
     <div

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import StoryblokProvider from '@/app/StoryblokProvider'
+import { ContentRefresh } from '@/components/ContentRefresh'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <StoryblokProvider>
       <html lang="en">
-        <body className={`${inter.className} antialiased`}>{children}</body>
+        <body className={`${inter.className} antialiased`}><ContentRefresh />{children}</body>
       </html>
     </StoryblokProvider>
   )
