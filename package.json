@@ -3,30 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --experimental-https",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "check:types": "tsc --noEmit"
   },
   "dependencies": {
     "@netlify/plugin-nextjs": "*",
-    "next": "15.2.6",
-    "pure-parse": "1.0.0",
+    "@emotion/cache": "^11.13.5",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@fontsource/roboto": "^5.1.0",
+    "@mui/material": "^5.16.7",
+    "@mui/material-nextjs": "^7.3.5",
+    "@mui/system": "^5.16.7",
+    "@storyblok/mui": "1.0.0",
+    "next": "^16.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "@storyblok/react": "^5.4.0",
-    "@storyblok/richtext": "^3.5.0"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.2.4",
-    "tailwindcss": "^4",
+    "eslint-config-next": "^16.0.0",
     "typescript": "^5"
   }
 }
