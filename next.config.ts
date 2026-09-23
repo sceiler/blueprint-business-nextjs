@@ -1,35 +1,27 @@
 import type { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**.storyblok.com',
-        port: '',
-        pathname: '/f/**',
-      },
-    ],
+const securityHeaders = [
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'Strict-Transport-Security', value: 'max-age=63072000' },
+  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+  {
+    key: 'Content-Security-Policy-Report-Only',
+    value:
+      "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'",
   },
-  /* config options here */
+]
+
+const nextConfig: NextConfig = {
+  // Allows the v0 preview proxy to reach this dev server's HMR/font endpoints.
+  allowedDevOrigins: ['*.vusercontent.net', '*.dev-vm.vusercontent.net', '*.v0.build', '*.vercel.run'],
   async headers() {
     return [
       {
         source: '/(.*)',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: `frame-ancestors 'self' https://app.storyblok.com`,
-          },
-        ],
+        headers: securityHeaders,
       },
     ]
-  },
-  // IMPORTANT: this makes all content public, including draft content.
-  // The SDK requires the access token to be exposed to the client.
-  env: {
-    STORYBLOK_DELIVERY_API_TOKEN: process.env.STORYBLOK_DELIVERY_API_TOKEN,
-    STORYBLOK_API_BASE_URL: process.env.STORYBLOK_API_BASE_URL,
   },
 }
 
