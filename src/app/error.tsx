@@ -1,5 +1,6 @@
 'use client'
-import ErrorPage from '@/components/ErrorPage'
+
+import { ErrorPage } from '@storyblok/mui'
 
 export default function Error() {
   return <ErrorPage />

@@ -1,0 +1,81 @@
+{
+  "space": {
+    "id": "295429864939350",
+    "name": "Trail & Tide — Outdoor Adventures",
+    "region": "eu-central-1"
+  },
+  "capturedAt": "2026-09-23T23:09:44.124Z",
+  "timeZone": "Europe/Berlin",
+  "asset": {
+    "id": "223279502840423",
+    "name": "trail-tide-brand.svg",
+    "alt": "Original illustrated mountain and sea landscape for Trail & Tide",
+    "url": "https://a.storyblok.com/f/295429864939350/1600x900/ce94903482/trail-tide-brand.svg"
+  },
+  "stories": [
+    {
+      "id": "223279564464155",
+      "uuid": "b5d73e65-c31a-487e-b309-ad2faa3762d5",
+      "slug": "events/autumn-trail-evening",
+      "name": "Autumn Trail Evening",
+      "content": {
+        "title": "Autumn Trail Evening",
+        "summary": "An online evening to find the outdoor journey that fits your pace.",
+        "venue": "Online — demo event",
+        "price": "Free",
+        "capacity": "80",
+        "start_date": "2026-10-08 18:30",
+        "end_date": "2026-10-08 19:30",
+        "timezone": "Europe/Berlin",
+        "demo_notice": "Fictional demo content. Prices, events, people, claims, and availability are illustrative; no real registration or booking is collected.",
+        "agenda": [
+          { "time": "18:30", "item": "Welcome" },
+          { "time": "18:40", "item": "Madeira and Algarve stories" },
+          { "time": "19:00", "item": "Choosing a difficulty level" },
+          { "time": "19:15", "item": "Packing questions" },
+          { "time": "19:30", "item": "Close" }
+        ],
+        "eventDetailsNote": "Free online event, 80 demo places. Hosts Mara Jensen and Inês Costa compare mountain and coastal journeys.",
+        "whatToExpect": "A calm, practical introduction for first-time small-group travellers. This fictional event has no live meeting link; a local demo confirmation is sufficient.",
+        "ctaLabel": "Join the evening",
+        "noBookingNote": "No travel booking or payment is taken."
+      }
+    },
+    {
+      "id": "223279578595365",
+      "uuid": "34ff5e7d-8522-42e9-8e9c-0adb4b97e3a0",
+      "slug": "team/mara-jensen",
+      "name": "Mara Jensen",
+      "content": {
+        "name": "Mara Jensen",
+        "title": "Mountain Journey Host",
+        "biography": "A fictional guide profile focused on patient pacing, route storytelling, and helping walkers prepare. Hosts Madeira and Dolomites journeys; no professional certification is asserted.",
+        "backgroundColor": "green"
+      }
+    },
+    {
+      "id": "223279579901990",
+      "uuid": "bf56c7b4-6673-4c4c-b4b8-f40685e70a14",
+      "slug": "team/ines-costa",
+      "name": "Inês Costa",
+      "content": {
+        "name": "Inês Costa",
+        "title": "Coastal Journey Host",
+        "biography": "A fictional host who brings coastal walks, market visits, and shared meals together. Leads the Algarve collection and co-hosts the Autumn Trail Evening.",
+        "backgroundColor": "blue"
+      }
+    },
+    {
+      "id": "223279544795149",
+      "uuid": "e36aa5ff-2638-4b2c-a987-a9fab0b825d5",
+      "slug": "brand/trail-and-tide",
+      "name": "Trail & Tide brand and voice",
+      "content": {
+        "title": "Trail & Tide brand and voice",
+        "summary": "Small-group journeys between mountains and sea, with room to slow down.",
+        "whoWeAre": "Trail & Tide is a fictional European outdoor-travel company for curious adults who prefer small groups, local guides, and thoughtful itineraries over a packed sightseeing list.",
+        "demo_notice": "Fictional demo content. Prices, events, people, claims, and availability are illustrative; no real registration or booking is collected."
+      }
+    }
+  ]
+}

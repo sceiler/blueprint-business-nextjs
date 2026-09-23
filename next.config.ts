@@ -5,31 +5,26 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.storyblok.com',
+        hostname: 'a.storyblok.com',
         port: '',
         pathname: '/f/**',
       },
     ],
   },
-  /* config options here */
   async headers() {
     return [
       {
         source: '/(.*)',
         headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           {
-            key: 'Content-Security-Policy',
-            value: `frame-ancestors 'self' https://app.storyblok.com`,
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
           },
         ],
       },
     ]
-  },
-  // IMPORTANT: this makes all content public, including draft content.
-  // The SDK requires the access token to be exposed to the client.
-  env: {
-    STORYBLOK_DELIVERY_API_TOKEN: process.env.STORYBLOK_DELIVERY_API_TOKEN,
-    STORYBLOK_API_BASE_URL: process.env.STORYBLOK_API_BASE_URL,
   },
 }
 
