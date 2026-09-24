@@ -21,6 +21,7 @@ import { parseLinkContent } from './parseLinkContent'
 import type {
   CardsContent,
   Content,
+  EventPageContent,
   HeroContent,
   PageContent,
   TestimonialContent,
@@ -67,7 +68,7 @@ const parseBackgroundColor = withDefault<BackgroundColor>(
   'white',
 )
 
-const parseAssetContent = object<AssetContent>({
+export const parseAssetContent = object<AssetContent>({
   fieldtype: equals('asset'),
   id: parseNumber,
   filename: parseString,
@@ -214,4 +215,25 @@ export const parseButtonContent = object<ButtonContent>({
   text: parseString,
   link: withDefault(parseLinkContent, undefined),
   color: withDefault(oneOf(equals('primary'), equals('secondary')), 'primary'),
+})
+
+/**
+ * Parses the root content of an `eventPage` story. This is a story root type,
+ * so it is parsed directly from `story.content` rather than through `parseContent`.
+ */
+export const parseEventPageContent = object<EventPageContent>({
+  component: equals('eventPage'),
+  _uid: parseString,
+  _editable: optional(parseString),
+  title: parseString,
+  summary: withDefault(parseString, ''),
+  image: withDefault(parseAssetContent, undefined),
+  body: withDefault(array(parseHeroContent), [] as HeroContent[]),
+  price: withDefault(parseString, ''),
+  venue: withDefault(parseString, ''),
+  capacity: withDefault(parseString, ''),
+  start_date: parseString,
+  end_date: withDefault(parseString, ''),
+  timezone: withDefault(parseString, 'Europe/Berlin'),
+  demo_notice: withDefault(parseString, ''),
 })

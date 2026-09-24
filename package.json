@@ -11,13 +11,19 @@
     "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.18.0",
+    "@mui/material-nextjs": "^5.18.0",
+    "@mui/system": "^5.18.0",
+    "@storyblok/mui": "^1.0.0",
+    "@storyblok/react": "^5.4.0",
+    "@storyblok/richtext": "^3.5.0",
     "next": "16.3.6",
     "pure-parse": "1.0.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "server-only": "0.0.1",
-    "@storyblok/react": "^5.4.0",
-    "@storyblok/richtext": "^3.5.0"
+    "server-only": "0.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -30,5 +36,7 @@
     "typescript": "^5"
   },
   "packageManager": "pnpm@10.17.1",
-  "engines": { "node": ">=22" }
+  "engines": {
+    "node": ">=22"
+  }
 }

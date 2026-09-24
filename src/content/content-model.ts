@@ -118,3 +118,22 @@ export type ButtonContent = BlockContent<{
   link?: LinkContent
   color: 'primary' | 'secondary'
 }>
+
+/**
+ * Root content of an `eventPage` story, e.g. the Autumn Trail Evening event.
+ * Not part of the `Content` union: this is a story root type, not a nested block.
+ */
+export type EventPageContent = BlockContent<{
+  component: 'eventPage'
+  title: string
+  summary: string
+  image?: AssetContent
+  body: HeroContent[]
+  price: string
+  venue: string
+  capacity: string
+  start_date: string
+  end_date: string
+  timezone: string
+  demo_notice: string
+}>

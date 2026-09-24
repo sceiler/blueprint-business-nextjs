@@ -1,5 +1,7 @@
 import type { NextConfig } from 'next'
 
+console.log('[v0] NEXT_ADAPTER_PATH =', process.env.NEXT_ADAPTER_PATH)
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
